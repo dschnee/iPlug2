@@ -74,8 +74,8 @@ IPlugVST2::IPlugVST2(IPlugInstanceInfo instanceInfo, IPlugConfig c)
   {
     mAEffect.flags |= effFlagsHasEditor;
     mEditRect.left = mEditRect.top = 0;
-    mEditRect.right = c.plugWidth;
-    mEditRect.bottom = c.plugHeight;
+    mEditRect.right = (VstInt16) c.plugWidth;
+    mEditRect.bottom = (VstInt16) c.plugHeight;
   }
   
   CreateTimer();
@@ -110,8 +110,8 @@ bool IPlugVST2::EditorResizeFromDelegate(int viewWidth, int viewHeight)
     if (viewWidth != GetEditorWidth() || viewHeight != GetEditorHeight())
     {
       mEditRect.left = mEditRect.top = 0;
-      mEditRect.right = viewWidth;
-      mEditRect.bottom = viewHeight;
+      mEditRect.right = (VstInt16) viewWidth;
+      mEditRect.bottom = (VstInt16) viewHeight;
     
       resized = mHostCallback(&mAEffect, audioMasterSizeWindow, viewWidth, viewHeight, 0, 0.f);
     }
@@ -750,8 +750,8 @@ VstIntPtr VSTCALLBACK IPlugVST2::VSTDispatcher(AEffect *pEffect, VstInt32 opCode
     {
       if (ptr)
       {
-        int idx = _this->GetCurrentPresetIdx();
-        strcpy((char*) ptr, _this->GetPresetName(idx));
+        int preset_idx = _this->GetCurrentPresetIdx();
+        strcpy((char*) ptr, _this->GetPresetName(preset_idx));
       }
       return 0;
     }

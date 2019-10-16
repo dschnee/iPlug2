@@ -36,7 +36,7 @@ IPlugAPIBase::IPlugAPIBase(IPlugConfig c, EAPI plugAPI)
   mAPI = plugAPI;
   mBundleID.Set(c.bundleID);
 
-  Trace(TRACELOC, "%s:%s", c.pluginName, CurrentTime());
+  //Trace(TRACELOC, "%s:%s", c.pluginName, CurrentTime());
   
   mParamDisplayStr.Set("", MAX_PARAM_DISPLAY_LEN);
 }

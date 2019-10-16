@@ -70,6 +70,8 @@
     #define OutputDebugString OutputDebugStringA
   #endif
 
+inline void DBGMSG(const char *format, ...) {}
+#if 0
   static void DBGMSG(const char *format, ...)
   {
     char buf[4096], *p = buf;
@@ -91,6 +93,8 @@
     
     OutputDebugString(buf);
   }
+#endif
+
 #endif
 #endif
 
@@ -117,7 +121,7 @@
       fclose(mFP);
       mFP = nullptr;
     }
-  };
+
 
   static bool IsWhitespace(char c)
   {
@@ -171,6 +175,7 @@
     str.Append(tStr.Get());
     return str.Get();
   }
+  };
 
   #if defined TRACER_BUILD
 
