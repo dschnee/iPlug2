@@ -85,12 +85,13 @@
       }
       return 0;
     }
-    
+    /*
     EXPORT int main(int hostCallback)
     {
       audioMasterCallback callback = reinterpret_cast<audioMasterCallback>(static_cast<VstIntPtr>(hostCallback));
       return static_cast<int>(reinterpret_cast<std::uintptr_t>(VSTPluginMain(callback)));
     }
+    */
   };
 #pragma mark - VST3 (All)
 #elif defined VST3_API || VST3C_API || defined VST3P_API

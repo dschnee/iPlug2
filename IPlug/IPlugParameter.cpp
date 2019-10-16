@@ -240,8 +240,8 @@ void IParam::Init(const IParam& p, const char* searchStr, const char* replaceStr
   for (auto i=0; i<p.NDisplayTexts(); i++)
   {
     double val;
-    const char* str = p.GetDisplayTextAtIdx(i, &val);
-    SetDisplayText(val, str);
+    const char* cstr = GetDisplayTextAtIdx(i, &val);
+    SetDisplayText(val, cstr);
   }
 }
 

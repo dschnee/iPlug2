@@ -322,12 +322,12 @@ void IPluginBase::MakePresetFromNamedParams(const char* name, int nParamsNamed, 
     pPreset->mInitialized = true;
     strcpy(pPreset->mName, name);
     
-    int i = 0, n = NParams();
+    int n = NParams();
     
     WDL_TypedBuf<double> vals;
     vals.Resize(n);
     double* pV = vals.Get();
-    for (i = 0; i < n; ++i, ++pV)
+    for (int i = 0; i < n; ++i, ++pV)
     {
       *pV = PARAM_UNINIT;
     }
@@ -989,13 +989,14 @@ bool IPluginBase::LoadBankFromFXB(const char* file)
       }
       else if (fxbMagic == 'FxBk') // Due to the big Endian-ness of FXP/FXB format we cannot call SerializeParams()
       {
-        int32_t chunkMagic;
-        int32_t byteSize;
+        //int32_t chunkMagic;
+        //int32_t byteSize;
         int32_t fxpMagic;
         int32_t fxpVersion;
-        int32_t pluginID;
-        int32_t pluginVersion;
+        //int32_t pluginID;
+        //int32_t pluginVersion;
         int32_t numParams;
+        byteSize = 0;
         char prgName[28];
         
         for(int i = 0; i<numPgms; i++)

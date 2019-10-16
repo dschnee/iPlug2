@@ -168,6 +168,7 @@ BEGIN_IPLUG_NAMESPACE
     str.Append(tStr.Get());
     return str.Get();
   }
+  };
 
   #if defined TRACER_BUILD
 

@@ -868,8 +868,8 @@ VstIntPtr VSTCALLBACK IPlugVST2::VSTDispatcher(AEffect *pEffect, VstInt32 opCode
     {
       if (ptr)
       {
-        int idx = _this->GetCurrentPresetIdx();
-        strcpy((char*) ptr, _this->GetPresetName(idx));
+        int preset_idx = _this->GetCurrentPresetIdx();
+        strcpy((char*) ptr, _this->GetPresetName(preset_idx));
       }
       return 0;
     }
