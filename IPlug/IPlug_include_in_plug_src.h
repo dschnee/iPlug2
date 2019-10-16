@@ -289,7 +289,7 @@ BEGIN_IPLUG_NAMESPACE
 
 #if defined VST2_API || defined VST3_API || defined AAX_API || defined AUv3_API || defined APP_API  || defined WAM_API || defined WEB_API
 
-Plugin* MakePlug(const InstanceInfo& info)
+Plugin* MakePlug(const iplug::InstanceInfo& info)
 {
   // From VST3 - is this necessary?
   static WDL_Mutex sMutex;

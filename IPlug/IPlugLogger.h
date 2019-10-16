@@ -641,7 +641,7 @@ BEGIN_IPLUG_NAMESPACE
 
 #else // TRACER_BUILD
   static void Trace(const char* funcName, int line, const char* format, ...) {}
-static const char* VSTOpcodeStr(int opCode) { return ""; }
+  static const char* VSTOpcodeStr(int opCode) { return ""; }
   static const char* AUSelectStr(int select) { return ""; }
   static const char* AUPropertyStr(int propID) { return ""; }
   static const char* AUScopeStr(int scope) { return ""; }
