@@ -160,7 +160,7 @@ static void ToLower(char* cDest, const char* cSrc)
   int i, n = (int) strlen(cSrc);
   for (i = 0; i < n; ++i)
   {
-    cDest[i] = tolower(cSrc[i]);
+    cDest[i] = (char) tolower(cSrc[i]);
   }
   cDest[i] = '\0';
 }

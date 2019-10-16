@@ -145,9 +145,9 @@ struct IMidiMsg
   void MakeNoteOnMsg(int noteNumber, int velocity, int offset, int channel = 0)
   {
     Clear();
-    mStatus = channel | (kNoteOn << 4) ;
-    mData1 = noteNumber;
-    mData2 = velocity;
+    mStatus = uint8_t (channel | (kNoteOn << 4));
+    mData1 = (uint8_t) noteNumber;
+    mData2 = (uint8_t) velocity;
     mOffset = offset;
   }
   
@@ -158,8 +158,8 @@ struct IMidiMsg
   void MakeNoteOffMsg(int noteNumber, int offset, int channel = 0)
   {
     Clear();
-    mStatus = channel | (kNoteOff << 4);
-    mData1 = noteNumber;
+    mStatus = uint8_t(channel | (kNoteOff << 4));
+    mData1 = (uint8_t) noteNumber;
     mOffset = offset;
   }
 
@@ -170,10 +170,10 @@ struct IMidiMsg
   void MakePitchWheelMsg(double value, int channel = 0, int offset = 0)
   {
     Clear();
-    mStatus = channel | (kPitchWheel << 4);
+    mStatus = (uint8_t) (channel | (kPitchWheel << 4));
     int i = 8192 + (int) (value * 8192.0);
     i = std::min(std::max(i, 0), 16383);
-    mData2 = i>>7;
+    mData2 = uint8_t (i>>7);
     mData1 = i&0x7F;
     mOffset = offset;
   }
@@ -186,9 +186,9 @@ struct IMidiMsg
   void MakeControlChangeMsg(EControlChangeMsg idx, double value, int channel = 0, int offset = 0)
   {
     Clear();
-    mStatus = channel | (kControlChange << 4);
-    mData1 = idx;
-    mData2 = (int) (value * 127.0);
+    mStatus = uint8_t (channel | (kControlChange << 4));
+    mData1 = (uint8_t) idx;
+    mData2 = (uint8_t) (value * 127.0);
     mOffset = offset;
   }
 
@@ -211,8 +211,8 @@ struct IMidiMsg
   void MakeChannelATMsg(int pressure, int offset, int channel)
   {
     Clear();
-    mStatus = channel | (kChannelAftertouch << 4);
-    mData1 = pressure;
+    mStatus = uint8_t (channel | (kChannelAftertouch << 4));
+    mData1 = (uint8_t) pressure;
     mData2 = 0;
     mOffset = offset;
   }
@@ -225,9 +225,9 @@ struct IMidiMsg
   void MakePolyATMsg(int noteNumber, int pressure, int offset, int channel)
   {
     Clear();
-    mStatus = channel | (kPolyAftertouch << 4);
-    mData1 = noteNumber;
-    mData2 = pressure;
+    mStatus = uint8_t (channel | (kPolyAftertouch << 4));
+    mData1 = (uint8_t) noteNumber;
+    mData2 = (uint8_t) pressure;
     mOffset = offset;
   }
   
