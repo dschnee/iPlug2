@@ -89,6 +89,5 @@ private:
   uint32_t mIntervalMs;
 };
 #elif defined OS_WEB
-#elif
   #error NOT IMPLEMENTED
 #endif

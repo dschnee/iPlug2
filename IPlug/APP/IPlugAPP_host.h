@@ -34,8 +34,8 @@
 #include <limits>
 #include <memory>
 
-#include "RtAudio.h"
-#include "RtMidi.h"
+#include <RtAudio.h>
+#include <RtMidi.h>
 
 #include "wdltypes.h"
 #include "wdlstring.h"
@@ -59,7 +59,7 @@
   #define DEFAULT_INPUT_DEV "Built-in Input"
   #define DEFAULT_OUTPUT_DEV "Built-in Output"
 #elif defined(OS_LINUX)
-  #include <IPlugSWELL.h>
+  //#include <IPlugSWELL.h>
 #endif
 
 #define OFF_TEXT "off"
