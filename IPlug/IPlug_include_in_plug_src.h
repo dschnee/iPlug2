@@ -86,7 +86,8 @@
       }
       return 0;
     }
-    /*
+
+#if 0
     EXPORT int main(int hostCallback)
     {
     #if defined OS_MAC
@@ -95,7 +96,8 @@
       return (int) (size_t) VSTPluginMain((audioMasterCallback)hostCallback);
     #endif
     }
-    */
+#endif
+    
   };
 #pragma mark - VST3 (All)
 #elif defined VST3_API || VST3C_API || defined VST3P_API
