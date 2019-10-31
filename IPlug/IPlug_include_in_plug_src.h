@@ -51,7 +51,8 @@
       }
       return 0;
     }
-    /*
+
+#if 0
     EXPORT int main(int hostCallback)
     {
     #if defined OS_MAC
@@ -60,7 +61,8 @@
       return (int) (size_t) VSTPluginMain((audioMasterCallback)hostCallback);
     #endif
     }
-    */
+#endif
+    
   };
 
 #pragma mark - VST3

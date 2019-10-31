@@ -23,15 +23,15 @@
 
 #define API_EXT2
 #ifdef VST2_API
-#ifdef REAPER_PLUGIN
-  #define LICE_PROVIDED_BY_APP
-//  #define SWELL_PROVIDED_BY_APP
-  #include "IPlugReaperVST2.h"
-  using IPlug = IPlugReaperVST2;
-#else
-  #include "IPlugVST2.h"
-  using IPlug = IPlugVST2;
-#endif
+  #ifdef REAPER_PLUGIN
+    #define LICE_PROVIDED_BY_APP
+  //  #define SWELL_PROVIDED_BY_APP
+    #include "IPlugReaperVST2.h"
+    using IPlug = IPlugReaperVST2;
+  #else
+    #include "IPlugVST2.h"
+    using IPlug = IPlugVST2;
+  #endif
   #define API_EXT "vst"
 #elif defined AU_API
   #include "IPlugAU.h"
