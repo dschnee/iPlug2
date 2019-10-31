@@ -1,10 +1,10 @@
 /*
  ==============================================================================
- 
- This file is part of the iPlug 2 library. Copyright (C) the iPlug 2 developers. 
- 
+
+ This file is part of the iPlug 2 library. Copyright (C) the iPlug 2 developers.
+
  See LICENSE.txt for  more info.
- 
+
  ==============================================================================
 */
 
@@ -15,11 +15,11 @@
  * @brief IPlug header include
  * Include this file in the main header for your plugin
  * A preprocessor macro for a particular API such as VST2_API should be defined at project level
-*/
+ */
 
-#include <cstdio>
 #include "IPlugPlatform.h"
 #include "config.h"
+#include <cstdio>
 
 #define API_EXT2
 #ifdef VST2_API
@@ -97,7 +97,7 @@ END_IPLUG_NAMESPACE
   #endif
   #define EXPORT __attribute__ ((visibility("default")))
 #elif defined OS_LINUX
-  //TODO:
+// TODO:
 #elif defined OS_WEB
   #define BUNDLE_ID ""
   #define APP_GROUP_ID ""
@@ -106,7 +106,7 @@ END_IPLUG_NAMESPACE
 #endif
 
 #if !defined NO_IGRAPHICS && !defined VST3P_API
-#include "IGraphics_include_in_plug_hdr.h"
+  #include "IGraphics_include_in_plug_hdr.h"
 #endif
 
 #define STRINGISE_IMPL(x) #x
@@ -114,10 +114,10 @@ END_IPLUG_NAMESPACE
 
 // Use: #pragma message WARN("My message")
 #if _MSC_VER
-#   define FILE_LINE_LINK __FILE__ "(" STRINGISE(__LINE__) ") : "
-#   define WARN(exp) (FILE_LINE_LINK "WARNING: " exp)
-#else//__GNUC__ - may need other defines for different compilers
-#   define WARN(exp) ("WARNING: " exp)
+  #define FILE_LINE_LINK __FILE__ "(" STRINGISE(__LINE__) ") : "
+  #define WARN(exp) (FILE_LINE_LINK "WARNING: " exp)
+#else //__GNUC__ - may need other defines for different compilers
+  #define WARN(exp) ("WARNING: " exp)
 #endif
 
 #ifndef PLUG_NAME

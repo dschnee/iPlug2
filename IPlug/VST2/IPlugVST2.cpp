@@ -142,15 +142,15 @@ IPlugVST2::IPlugVST2(const InstanceInfo& info, const Config& config)
   mAEffect.numOutputs = nOutputs;
   mAEffect.uniqueID = config.uniqueID;
   mAEffect.version = GetPluginVersion(true);
-  mAEffect.__ioRatioDeprecated = 1.0f;
-  mAEffect.__processDeprecated = VSTProcess;
+  mAEffect.DECLARE_VST_DEPRECATED(ioRatio) = 1.0f;
+  mAEffect.DECLARE_VST_DEPRECATED(process) = VSTProcess;
   mAEffect.processReplacing = VSTProcessReplacing;
   mAEffect.processDoubleReplacing = VSTProcessDoubleReplacing;
   mAEffect.initialDelay = config.latency;
   mAEffect.flags = effFlagsCanReplacing | effFlagsCanDoubleReplacing;
 
   if (config.plugDoesChunks) { mAEffect.flags |= effFlagsProgramChunks; }
-  if (LegalIO(1, -1)) { mAEffect.flags |= __effFlagsCanMonoDeprecated; }
+  if (LegalIO(1, -1)) { mAEffect.flags |= DECLARE_VST_DEPRECATED(effFlagsCanMono); }
   if (config.plugType == EIPlugPluginType::kInstrument) { mAEffect.flags |= effFlagsIsSynth; }
 
   memset(&mEditRect, 0, sizeof(ERect));
@@ -485,7 +485,7 @@ VstIntPtr VSTCALLBACK IPlugVST2::VSTDispatcher(AEffect *pEffect, VstInt32 opCode
       }
       return 0;
     }
-    case __effIdentifyDeprecated:
+    case DECLARE_VST_DEPRECATED(effIdentify):
     {
       return 'NvEf';  // Random deprecated magic.
     }
@@ -937,7 +937,7 @@ template <class SAMPLETYPE>
 void IPlugVST2::VSTPreProcess(SAMPLETYPE** inputs, SAMPLETYPE** outputs, VstInt32 nFrames)
 {
   if (DoesMIDIIn())
-    mHostCallback(&mAEffect, __audioMasterWantMidiDeprecated, 0, 0, 0, 0.0f);
+    mHostCallback(&mAEffect, DECLARE_VST_DEPRECATED(audioMasterWantMidi), 0, 0, 0, 0.0f);
 
   AttachBuffers(ERoute::kInput, 0, MaxNChannels(ERoute::kInput), inputs, nFrames);
   AttachBuffers(ERoute::kOutput, 0, MaxNChannels(ERoute::kOutput), outputs, nFrames);
