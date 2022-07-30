@@ -228,9 +228,11 @@ END_IPLUG_NAMESPACE
   #pragma message WARN("PLUG_SHARED_RESOURCES not defined, setting to 0")
   #define PLUG_SHARED_RESOURCES 0
 #else
-  #ifndef SHARED_RESOURCES_SUBPATH
-    #pragma message WARN("SHARED_RESOURCES_SUBPATH not defined, setting to PLUG_NAME")
-    #define SHARED_RESOURCES_SUBPATH PLUG_NAME
+  #ifndef NO_IGRAPHICS
+    #ifndef SHARED_RESOURCES_SUBPATH
+      #pragma message WARN("SHARED_RESOURCES_SUBPATH not defined, setting to PLUG_NAME")
+      #define SHARED_RESOURCES_SUBPATH PLUG_NAME
+    #endif
   #endif
 #endif
 
