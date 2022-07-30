@@ -20,6 +20,7 @@
 #include "IPlugPlatform.h"
 #include "IPlugAPIBase.h"
 #include "IPlugProcessor.h"
+#include "IPlugLogger.h"
 
 BEGIN_IPLUG_NAMESPACE
 

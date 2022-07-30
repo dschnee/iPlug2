@@ -135,7 +135,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdPa
   }
   catch(std::exception e)
   {
-    DBGMSG("Exception: %s", e.what());
+    IPLUG_DBGMSG("Exception: %s", e.what());
     return 1;
   }
   return 0;
@@ -165,7 +165,7 @@ int main(int argc, char *argv[])
 #endif
   
   if(AppIsSandboxed())
-    DBGMSG("App is sandboxed, file system access etc restricted!\n");
+    IPLUG_DBGMSG("App is sandboxed, file system access etc restricted!\n");
   
   return NSApplicationMain(argc,  (const char **) argv);
 }

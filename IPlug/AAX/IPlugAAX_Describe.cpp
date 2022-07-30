@@ -58,7 +58,7 @@ static uint64_t GetAPIBusTypeForChannelIOConfig(int configIdx, ERoute dir, int b
     case 10:return AAX_eStemFormat_7_1_2;
     case 16:return AAX_eStemFormat_Ambi_3_ACN;
     default:
-      DBGMSG("No stem format found for this channel count, you need to implement GetAPIBusTypeForChannelIOConfig() and #define CUSTOM_BUSTYPE_FUNC\n");
+      IPLUG_DBGMSG("No stem format found for this channel count, you need to implement GetAPIBusTypeForChannelIOConfig() and #define CUSTOM_BUSTYPE_FUNC\n");
       assert(0);
       return AAX_eStemFormat_None;
   }

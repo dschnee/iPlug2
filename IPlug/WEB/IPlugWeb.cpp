@@ -75,7 +75,7 @@ void IPlugWeb::SendMidiMsgFromUI(const IMidiMsg& msg)
 
 void IPlugWeb::SendSysexMsgFromUI(const ISysEx& msg)
 {
-  DBGMSG("TODO: SendSysexMsgFromUI");
+  IPLUG_DBGMSG("TODO: SendSysexMsgFromUI");
 
 //   EM_ASM({
 //     window[Module.UTF8ToString($0)]["midiOut"].send(0x90, 0x45, 0x7f);

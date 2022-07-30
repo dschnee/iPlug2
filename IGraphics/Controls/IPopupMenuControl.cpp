@@ -836,7 +836,7 @@ void IPopupMenuControl::CollapseEverything()
 
 void IPopupMenuControl::OnEndAnimation()
 {
-//  DBGMSG("state %i\n", mState);
+//  IPLUG_DBGMSG("state %i\n", mState);
   
   if(mState == kExpanding)
   {

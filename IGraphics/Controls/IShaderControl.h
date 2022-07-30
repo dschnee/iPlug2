@@ -80,7 +80,7 @@ public:
     )", err);
     
     if(err.GetLength())
-      DBGMSG("%s\n", err.Get());
+      IPLUG_DBGMSG("%s\n", err.Get());
   }
 
   void Draw(IGraphics& g) override

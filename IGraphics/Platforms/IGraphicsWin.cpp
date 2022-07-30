@@ -128,7 +128,7 @@ void IGraphicsWin::OnDisplayTimer(int vBlankCount)
     if (msgCount != curCount)
     {
       // we are late, just skip it until we can get a message soon after the vblank event.
-      // DBGMSG("vblank is late by %i frames.  Skipping.", (mVBlankCount - msgCount));
+      // IPLUG_DBGMSG("vblank is late by %i frames.  Skipping.", (mVBlankCount - msgCount));
       return;
     }
   }
@@ -204,7 +204,7 @@ void IGraphicsWin::OnDisplayTimer(int vBlankCount)
         {
           // we are late, skip the next vblank to give us a breather.
           mVBlankSkipUntil = curCount+1;
-          //DBGMSG("vblank painting was late by %i frames.", (mVBlankSkipUntil - msgCount));
+          //IPLUG_DBGMSG("vblank painting was late by %i frames.", (mVBlankSkipUntil - msgCount));
         }
       }
     }
@@ -988,7 +988,7 @@ void IGraphicsWin::CreateGLContext()
 
   //TODO: return false if GL init fails?
   if (!gladLoadGL())
-    DBGMSG("Error initializing glad");
+    IPLUG_DBGMSG("Error initializing glad");
 
   glGetError();
 

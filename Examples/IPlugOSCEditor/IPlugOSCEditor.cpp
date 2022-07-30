@@ -16,7 +16,7 @@ IPlugOSCEditor::IPlugOSCEditor(const InstanceInfo& info)
     if (pGraphics)
       pGraphics->GetControlWithTag(kCtrlTagWebView)->As<IWebViewControl>()->LoadHTML(log.Get());
     
-    DBGMSG("%s\n", log.Get());
+    IPLUG_DBGMSG("%s\n", log.Get());
   };
   
   OSCReceiver::SetLogFunc(logFunc);
@@ -153,7 +153,7 @@ void IPlugOSCEditor::OnOSCMessage(OscMessageRead& msg)
     WDL_String str;
     str.Set("Received message: ");
     str.Append(&oscStr);
-    DBGMSG("%s\n", str.Get());
+    IPLUG_DBGMSG("%s\n", str.Get());
     
     if(pGraphics) {
       pGraphics->GetControlWithTag(kCtrlTagWebView)->As<IWebViewControl>()->LoadHTML(str.Get());

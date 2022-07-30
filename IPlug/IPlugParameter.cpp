@@ -417,7 +417,7 @@ void IParam::GetJSON(WDL_String& json, int idx) const
 
 void IParam::PrintDetails() const
 {
-  DBGMSG("%s %f", GetName(), Value());
+  IPLUG_DBGMSG("%s %f", GetName(), Value());
 }
 
 IParam::EShapeIDs IParam::GetShapeID() const

@@ -34,8 +34,8 @@ public:
 
   //WAM
   const char* init(uint32_t bufsize, uint32_t sr, void* pDesc) override;
-  void terminate() override { DBGMSG("terminate"); }
-  void resize(uint32_t bufsize) override { DBGMSG("resize"); }
+  void terminate() override { IPLUG_DBGMSG("terminate"); }
+  void resize(uint32_t bufsize) override { IPLUG_DBGMSG("resize"); }
 
   void onProcess(WAM::AudioBus* pAudio, void* pData) override;
   void onMidi(byte status, byte data1, byte data2) override;

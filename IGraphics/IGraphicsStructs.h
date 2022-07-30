@@ -1688,7 +1688,7 @@ struct IRECT
   }
   
   /** Print the IRECT's details to the console in Debug builds */
-  void DBGPrint() { DBGMSG("L: %f, T: %f, R: %f, B: %f,: W: %f, H: %f\n", L, T, R, B, W(), H()); }
+  void DBGPrint() { IPLUG_DBGMSG("L: %f, T: %f, R: %f, B: %f,: W: %f, H: %f\n", L, T, R, B, W(), H()); }
 };
 
 /** Used to manage mouse modifiers i.e. right click and shift/control/alt keys. Also used for multiple touches, to keep track of touch radius */
@@ -1713,7 +1713,7 @@ struct IMouseMod
   bool IsTouch() const { return touchID > 0; }
 
   /** Print the mouse modifier values to the console in Debug builds */
-  void DBGPrint() { DBGMSG("L: %i, R: %i, S: %i, C: %i,: A: %i\n", L, R, S, C, A); }
+  void DBGPrint() { IPLUG_DBGMSG("L: %i, R: %i, S: %i, C: %i,: A: %i\n", L, R, S, C, A); }
 };
 
 /** Used to group mouse coordinates with mouse modifier information */

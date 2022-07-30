@@ -27,7 +27,7 @@ public:
     Voice()
     : mAMPEnv("gain", [&](){ mOSC.Reset(); }) // capture ok on RT thread?
     {
-//      DBGMSG("new Voice: %i control inputs.\n", static_cast<int>(mInputs.size()));
+//      IPLUG_DBGMSG("new Voice: %i control inputs.\n", static_cast<int>(mInputs.size()));
     }
 
     bool GetBusy() const override

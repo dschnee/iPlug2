@@ -230,7 +230,7 @@ END_IPLUG_NAMESPACE
 IGraphicsNanoVG::IGraphicsNanoVG(IGEditorDelegate& dlg, int w, int h, int fps, float scale)
 : IGraphics(dlg, w, h, fps, scale)
 {
-  DBGMSG("IGraphics NanoVG @ %i FPS\n", fps);
+  IPLUG_DBGMSG("IGraphics NanoVG @ %i FPS\n", fps);
   StaticStorage<IFontData>::Accessor storage(sFontCache);
   storage.Retain();
 }
@@ -455,7 +455,7 @@ void IGraphicsNanoVG::OnViewInitialized(void* pContext)
 #endif
 
   if (mVG == nullptr)
-    DBGMSG("Could not init nanovg.\n");
+    IPLUG_DBGMSG("Could not init nanovg.\n");
 }
 
 void IGraphicsNanoVG::OnViewDestroyed()
@@ -489,7 +489,7 @@ void IGraphicsNanoVG::DrawResize()
     mMainFrameBuffer = nvgCreateFramebuffer(mVG, WindowWidth() * GetScreenScale(), WindowHeight() * GetScreenScale(), 0);
   
     if (mMainFrameBuffer == nullptr)
-      DBGMSG("Could not init FBO.\n");
+      IPLUG_DBGMSG("Could not init FBO.\n");
   }
 }
 

@@ -348,11 +348,11 @@ IGraphicsSkia::IGraphicsSkia(IGEditorDelegate& dlg, int w, int h, int fps, float
   mMainPath.setIsVolatile(true);
   
 #if defined IGRAPHICS_CPU
-  DBGMSG("IGraphics Skia CPU @ %i FPS\n", fps);
+  IPLUG_DBGMSG("IGraphics Skia CPU @ %i FPS\n", fps);
 #elif defined IGRAPHICS_METAL
-  DBGMSG("IGraphics Skia METAL @ %i FPS\n", fps);
+  IPLUG_DBGMSG("IGraphics Skia METAL @ %i FPS\n", fps);
 #elif defined IGRAPHICS_GL
-  DBGMSG("IGraphics Skia GL @ %i FPS\n", fps);
+  IPLUG_DBGMSG("IGraphics Skia GL @ %i FPS\n", fps);
 #endif
   StaticStorage<Font>::Accessor storage(sFontCache);
   storage.Retain();

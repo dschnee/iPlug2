@@ -104,7 +104,7 @@ bool IPlugAPPHost::InitState()
     
     if(stat(mINIPath.Get(), &st) == 0) // if settings file exists read values into state
     {
-      DBGMSG("Reading ini file from %s\n", mINIPath.Get());
+      IPLUG_DBGMSG("Reading ini file from %s\n", mINIPath.Get());
       
       mState.mAudioDriverType = GetPrivateProfileInt("audio", "driver", 0, mINIPath.Get());
 
@@ -442,7 +442,7 @@ bool IPlugAPPHost::TryToChangeAudio()
 
   if (resetToDefault)
   {
-    DBGMSG("couldn't find previous audio device, reseting to default\n");
+    IPLUG_DBGMSG("couldn't find previous audio device, reseting to default\n");
 
     UpdateINI();
   }
@@ -588,7 +588,7 @@ bool IPlugAPPHost::InitAudio(uint32_t inId, uint32_t outId, uint32_t sr, uint32_
 
   mBufferSize = iovs; // mBufferSize may get changed by stream
 
-  DBGMSG("\ntrying to start audio stream @ %i sr, %i buffer size\nindev = %i:%s\noutdev = %i:%s\ninputs = %i\noutputs = %i\n",
+  IPLUG_DBGMSG("\ntrying to start audio stream @ %i sr, %i buffer size\nindev = %i:%s\noutdev = %i:%s\ninputs = %i\noutputs = %i\n",
          sr, mBufferSize, inId, GetAudioDeviceName(inId).c_str(), outId, GetAudioDeviceName(outId).c_str(), iParams.nChannels, oParams.nChannels);
 
   RtAudio::StreamOptions options;
@@ -758,7 +758,7 @@ void IPlugAPPHost::MIDICallback(double deltatime, std::vector<uint8_t>* pMsg, vo
   {
     if(pMsg->size() > MAX_SYSEX_SIZE)
     {
-      DBGMSG("SysEx message exceeds MAX_SYSEX_SIZE\n");
+      IPLUG_DBGMSG("SysEx message exceeds MAX_SYSEX_SIZE\n");
       return;
     }
     

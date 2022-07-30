@@ -71,7 +71,7 @@ bool IPlugSwiftUI::OnMessage(int msgTag, int ctrlTag, int dataSize, const void* 
 {
   if (msgTag == kMsgTagHello)
   {
-    DBGMSG("MsgTagHello received on C++ side\n");
+    IPLUG_DBGMSG("MsgTagHello received on C++ side\n");
     return true;
   }
   else if(msgTag == kMsgTagRestorePreset)

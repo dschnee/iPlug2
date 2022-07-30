@@ -260,7 +260,7 @@ void IPluginBase::PrintParamValues()
 {
   ForParamInRange(0, NParams()-1, [](int paramIdx, IParam& param) {
     param.PrintDetails();
-    DBGMSG("\n");
+    IPLUG_DBGMSG("\n");
   });
 }
 

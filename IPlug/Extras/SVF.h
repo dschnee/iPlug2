@@ -80,7 +80,7 @@ public:
 
     const double magnitude = 20. * std::log10(std::abs(std::real(result)));
 
-    //DBGMSG("%f\n", magnitude);
+    //IPLUG_DBGMSG("%f\n", magnitude);
 
     return magnitude;
   }

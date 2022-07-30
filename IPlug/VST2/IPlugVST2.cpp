@@ -217,8 +217,8 @@ bool IPlugVST2::EditorResize(int viewWidth, int viewHeight)
 void IPlugVST2::UpdateEditRect()
 {
   mEditRect.left = mEditRect.top = 0;
-  mEditRect.right = GetEditorWidth();
-  mEditRect.bottom = GetEditorHeight();
+  mEditRect.right = (VstInt16) GetEditorWidth();
+  mEditRect.bottom = (VstInt16) GetEditorHeight();
 }
 
 void IPlugVST2::SetLatency(int samples)

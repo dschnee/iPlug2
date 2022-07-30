@@ -288,7 +288,7 @@
 			"pGraphics->AttachControl(new IVButtonControl(bounds, SplashClickActionFunc,",
 			"\t\"${1:Press Me}\", DEFAULT_STYLE.WithColor(kFG, ${2:COLOR_WHITE}).WithLabelText({15.f, EVAlign::Middle})))->SetAnimationEndActionFunction(",
 			"\t[](IControl* pCaller) {",
-			"\t\t${3:DBGMSG(\"button clicked\")};",
+			"\t\t${3:IPLUG_DBGMSG(\"button clicked\")};",
 			"});",
 		],
 		"description": "Attach an IVButtonControl"

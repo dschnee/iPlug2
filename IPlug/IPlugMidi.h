@@ -529,7 +529,7 @@ struct IMidiMsg
   /** Print a message (DEBUG BUILDS) */
   void PrintMsg() const
   {
-    DBGMSG("midi: offset %i, (%s:%d:%d:%d)\n", mOffset, StatusMsgStr(StatusMsg()), Channel(), mData1, mData2);
+    IPLUG_DBGMSG("midi: offset %i, (%s:%d:%d:%d)\n", mOffset, StatusMsgStr(StatusMsg()), Channel(), mData1, mData2);
   }
 };
 

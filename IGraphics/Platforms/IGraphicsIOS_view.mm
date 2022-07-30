@@ -300,7 +300,7 @@ extern StaticStorage<CoreTextFontDescriptor> sFontDescriptorCache;
     }
   }
 
-//  DBGMSG("%lu\n", points[0].ms.idx);
+//  IPLUG_DBGMSG("%lu\n", points[0].ms.idx);
   
   if(eventType == ETouchEvent::Began)
     mGraphics->OnMouseDown(points);

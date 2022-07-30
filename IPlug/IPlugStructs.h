@@ -631,7 +631,7 @@ struct IKeyPress
     strcpy(utf8, _utf8);
   }
 
-  void DBGPrint() const { DBGMSG("VK: %i\n", VK); }
+  void DBGPrint() const { IPLUG_DBGMSG("VK: %i\n", VK); }
 };
 
 END_IPLUG_NAMESPACE

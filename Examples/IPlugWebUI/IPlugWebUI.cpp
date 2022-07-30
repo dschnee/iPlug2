@@ -53,8 +53,8 @@ bool IPlugWebUI::OnMessage(int msgTag, int ctrlTag, int dataSize, const void* pD
   else if (msgTag == kMsgTagBinaryTest)
   {
     auto uint8Data = reinterpret_cast<const uint8_t*>(pData);
-    DBGMSG("Data Size %i bytes\n",  dataSize);
-    DBGMSG("Byte values: %i, %i, %i, %i\n", uint8Data[0], uint8Data[1], uint8Data[2], uint8Data[3]);
+    IPLUG_DBGMSG("Data Size %i bytes\n",  dataSize);
+    IPLUG_DBGMSG("Byte values: %i, %i, %i, %i\n", uint8Data[0], uint8Data[1], uint8Data[2], uint8Data[3]);
   }
 
   return false;
@@ -62,7 +62,7 @@ bool IPlugWebUI::OnMessage(int msgTag, int ctrlTag, int dataSize, const void* pD
 
 void IPlugWebUI::OnParamChange(int paramIdx)
 {
-  DBGMSG("gain %f\n", GetParam(paramIdx)->Value());
+  IPLUG_DBGMSG("gain %f\n", GetParam(paramIdx)->Value());
 }
 
 void IPlugWebUI::ProcessMidiMsg(const IMidiMsg& msg)
