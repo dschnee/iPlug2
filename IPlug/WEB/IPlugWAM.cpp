@@ -24,12 +24,12 @@ IPlugWAM::IPlugWAM(const InstanceInfo& info, const Config& config)
 
 const char* IPlugWAM::init(uint32_t bufsize, uint32_t sr, void* pDesc)
 {
-  DBGMSG("init\n");
+  IPLUG_DBGMSG("init\n");
 
   SetSampleRate(sr);
   SetBlockSize(bufsize);
 
-  DBGMSG("%i %i\n", sr, bufsize);
+  IPLUG_DBGMSG("%i %i\n", sr, bufsize);
 
   WDL_String json;
   json.Set("{\n");
@@ -151,13 +151,13 @@ void IPlugWAM::onMessage(char* verb, char* res, void* pData, uint32_t size)
   }
   else
   {
-    DBGMSG("onMessageA not handled\n");
+    IPLUG_DBGMSG("onMessageA not handled\n");
   }
 }
 
 void IPlugWAM::onMidi(byte status, byte data1, byte data2)
 {
-//   DBGMSG("onMidi\n");
+//   IPLUG_DBGMSG("onMidi\n");
   IMidiMsg msg = {0, status, data1, data2};
   ProcessMidiMsg(msg); // onMidi is not called on HPT. We could queue things up, but just process the message straightaway for now
   //mMidiMsgsFromProcessor.Push(msg);
@@ -172,7 +172,7 @@ void IPlugWAM::onMidi(byte status, byte data1, byte data2)
 
 void IPlugWAM::onParam(uint32_t idparam, double value)
 {
-//  DBGMSG("IPlugWAM:: onParam %i %f\n", idparam, value);
+//  IPLUG_DBGMSG("IPlugWAM:: onParam %i %f\n", idparam, value);
   SetParameterValue(idparam, value);
 }
 

@@ -371,7 +371,7 @@ APIBitmap* IGraphicsCanvas::LoadAPIBitmap(const char* name, const void* pData, i
     return nullptr;
   }
 
-  DBGMSG("Size: %d x %d\n", width, height);
+  IPLUG_DBGMSG("Size: %d x %d\n", width, height);
   // Now that we've decoded the data, put it on a canvas
   int rgbaSize = width * height * channels;
   val rgbaArray = val::global("Uint8ClampedArray").new_(val(emscripten::typed_memory_view(rgbaSize, pRGBA)));

@@ -217,8 +217,8 @@ bool IPlugVST2::EditorResize(int viewWidth, int viewHeight)
 void IPlugVST2::UpdateEditRect()
 {
   mEditRect.left = mEditRect.top = 0;
-  mEditRect.right = GetEditorWidth();
-  mEditRect.bottom = GetEditorHeight();
+  mEditRect.right = (VstInt16) GetEditorWidth();
+  mEditRect.bottom = (VstInt16) GetEditorHeight();
 }
 
 void IPlugVST2::SetLatency(int samples)
@@ -896,7 +896,7 @@ VstIntPtr VSTCALLBACK IPlugVST2::VSTDispatcher(AEffect *pEffect, VstInt32 opCode
       str[0] = static_cast<char>(idx);
       str[1] = '\0';
 
-      int vk = VSTKeyCodeToVK(value, idx);
+      int vk = VSTKeyCodeToVK((int) value, (int) idx);
       int modifiers = (int)opt;
 
       IKeyPress keyPress{ str, static_cast<int>(vk),

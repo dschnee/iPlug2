@@ -558,7 +558,7 @@ WDL_DLGRET IPlugAPPHost::MainDlgProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPA
       IPlugAPP* pPlug = pAppHost->GetPlug();
 
       if (!pAppHost->OpenWindow(gHWND))
-        DBGMSG("couldn't attach gui\n");
+        IPLUG_DBGMSG("couldn't attach gui\n");
 
       width = pPlug->GetEditorWidth();
       height = pPlug->GetEditorHeight();

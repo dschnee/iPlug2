@@ -59,7 +59,7 @@ void IPlugFaust::SetParameterValueNormalised(int paramIdx, double normalizedValu
 {
   if (paramIdx > kNoParameter && paramIdx >= NParams())
   {
-    DBGMSG("IPlugFaust-%s:: No parameter %i\n", mName.Get(), paramIdx);
+    IPLUG_DBGMSG("IPlugFaust-%s:: No parameter %i\n", mName.Get(), paramIdx);
   }
   else
   {
@@ -68,7 +68,7 @@ void IPlugFaust::SetParameterValueNormalised(int paramIdx, double normalizedValu
     if (mZones.GetSize() == NParams())
       *(mZones.Get(paramIdx)) = mParams.Get(paramIdx)->Value();
     else
-      DBGMSG("IPlugFaust-%s:: Missing zone for parameter %s\n", mName.Get(), mParams.Get(paramIdx)->GetName());
+      IPLUG_DBGMSG("IPlugFaust-%s:: Missing zone for parameter %s\n", mName.Get(), mParams.Get(paramIdx)->GetName());
   }
 }
 
@@ -83,10 +83,10 @@ void IPlugFaust::SetParameterValue(int paramIdx, double nonNormalizedValue)
     if (mZones.GetSize() == NParams())
       *(mZones.Get(paramIdx)) = nonNormalizedValue;
     else
-      DBGMSG("IPlugFaust-%s:: Missing zone for parameter %s\n", mName.Get(), mParams.Get(paramIdx)->GetName());
+      IPLUG_DBGMSG("IPlugFaust-%s:: Missing zone for parameter %s\n", mName.Get(), mParams.Get(paramIdx)->GetName());
   }
   else
-    DBGMSG("SetParameterValue called with no FAUST params\n");
+    IPLUG_DBGMSG("SetParameterValue called with no FAUST params\n");
 }
 
 void IPlugFaust::SetParameterValue(const char* labelToLookup, double nonNormalizedValue)
@@ -98,7 +98,7 @@ void IPlugFaust::SetParameterValue(const char* labelToLookup, double nonNormaliz
   if (dest)
     *dest = nonNormalizedValue;
   else
-    DBGMSG("IPlugFaust-%s:: No parameter named %s\n", mName.Get(), labelToLookup);
+    IPLUG_DBGMSG("IPlugFaust-%s:: No parameter named %s\n", mName.Get(), labelToLookup);
 }
 
 int IPlugFaust::CreateIPlugParameters(IPlugAPIBase* pPlug, int startIdx, int endIdx, bool setToDefault)
@@ -181,7 +181,7 @@ void IPlugFaust::BuildParameterMap()
 
   for (auto p = 0; p < NParams(); p++)
   {
-    DBGMSG("%i %s\n", p, mParams.Get(p)->GetName());
+    IPLUG_DBGMSG("%i %s\n", p, mParams.Get(p)->GetName());
   }
 }
 

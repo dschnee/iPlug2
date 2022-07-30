@@ -84,7 +84,7 @@ bool IPlugCocoaUI::OnMessage(int msgTag, int ctrlTag, int dataSize, const void* 
 {
   if(msgTag == kMsgTagHello)
   {
-    DBGMSG("MsgTagHello received on C++ side\n");
+    IPLUG_DBGMSG("MsgTagHello received on C++ side\n");
     return true;
   }
   else if(msgTag == kMsgTagRestorePreset)
@@ -97,7 +97,7 @@ bool IPlugCocoaUI::OnMessage(int msgTag, int ctrlTag, int dataSize, const void* 
 
 void IPlugCocoaUI::OnParamChange(int paramIdx)
 {
-  DBGMSG("Param change %i: %f\n", paramIdx, GetParam(paramIdx)->Value());
+  IPLUG_DBGMSG("Param change %i: %f\n", paramIdx, GetParam(paramIdx)->Value());
 }
 
 void IPlugCocoaUI::ProcessBlock(sample** inputs, sample** outputs, int nFrames)

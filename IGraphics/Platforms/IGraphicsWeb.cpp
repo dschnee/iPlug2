@@ -591,7 +591,7 @@ static void color_picker_callback(val e)
 
 static void file_dialog_callback(val e)
 {
-  // DBGMSG(e["files"].as<std::string>().c_str());
+  // IPLUG_DBGMSG(e["files"].as<std::string>().c_str());
 }
 
 EMSCRIPTEN_BINDINGS(events) {
@@ -606,7 +606,7 @@ IGraphicsWeb::IGraphicsWeb(IGEditorDelegate& dlg, int w, int h, int fps, float s
 {
   val keys = val::global("Object").call<val>("keys", GetPreloadedImages());
   
-  DBGMSG("Preloaded %i images\n", keys["length"].as<int>());
+  IPLUG_DBGMSG("Preloaded %i images\n", keys["length"].as<int>());
   
   emscripten_set_mousedown_callback("#canvas", this, 1, mouse_callback);
   emscripten_set_mouseup_callback("#canvas", this, 1, mouse_callback);

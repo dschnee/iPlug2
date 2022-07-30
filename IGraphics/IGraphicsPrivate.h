@@ -582,7 +582,7 @@ private:
     pKey->scale = scale;
     pKey->name.Set(str);
 
-    //DBGMSG("adding %s to the static storage at %.1fx the original scale\n", str, scale);
+    //IPLUG_DBGMSG("adding %s to the static storage at %.1fx the original scale\n", str, scale);
   }
 
   /** \todo @param pData \todo */

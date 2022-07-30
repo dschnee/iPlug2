@@ -35,18 +35,18 @@ bool IWebsocketServer::CreateServer(const char* DOCUMENT_ROOT, const char* PORT)
     try { sServer = std::make_unique<CivetServer>(cpp_options); }
     catch (const std::exception& e)
     {
-      DBGMSG("Couldn't create server, port probably already in use\n");
+      IPLUG_DBGMSG("Couldn't create server, port probably already in use\n");
       return false;
     }
     
     sServer->addWebSocketHandler("/ws", this);
-    DBGMSG("Websocket server running at http://localhost:%s/ws serving %s\n", PORT, DOCUMENT_ROOT);
+    IPLUG_DBGMSG("Websocket server running at http://localhost:%s/ws serving %s\n", PORT, DOCUMENT_ROOT);
   }
   else
   {
     WDL_String url;
     GetURL(url);
-    DBGMSG("Websocket server already running at %s\n", url.Get());
+    IPLUG_DBGMSG("Websocket server already running at %s\n", url.Get());
   }
   
   sInstances++;
@@ -140,7 +140,7 @@ bool IWebsocketServer::DoSendToConnection(int idx, int opcode, const char* pData
 bool IWebsocketServer::handleConnection(CivetServer* pServer, const struct mg_connection* pConn)
 {
   WDL_MutexLock lock(&mMutex);
-  DBGMSG("WS connected\n");
+  IPLUG_DBGMSG("WS connected\n");
 
   return true;
 }
@@ -151,7 +151,7 @@ void IWebsocketServer::handleReadyState(CivetServer* pServer, struct mg_connecti
   
   mConnections.Add(pConn);
   
-  DBGMSG("WS ready NClients %i\n", NClients());
+  IPLUG_DBGMSG("WS ready NClients %i\n", NClients());
   
   OnWebsocketReady(NClients()-1); // should defer to main thread
 }
@@ -180,7 +180,7 @@ void IWebsocketServer::handleClose(CivetServer* pServer, const struct mg_connect
 
   mConnections.DeletePtr(pConn);
   
-  DBGMSG("WS closed NClients %i\n", NClients());
+  IPLUG_DBGMSG("WS closed NClients %i\n", NClients());
 }
 
 std::unique_ptr<CivetServer> IWebsocketServer::sServer;

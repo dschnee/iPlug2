@@ -65,7 +65,7 @@ static AUAudioUnitPreset* NewAUPreset(NSInteger number, NSString* pName)
     {
       WDL_TypedBuf<uint64_t> busTypes;
       GetAPIBusTypeForChannelIOConfig(configIdx, (ERoute) dir, busIdx, pConfig, &busTypes);
-      //          DBGMSG("Found %i different tags for an %s bus with %i channels\n", busTypes.GetSize(), RoutingDirStrs[dir], pConfig->GetBusInfo(dir, busIdx)->NChans());
+      //          IPLUG_DBGMSG("Found %i different tags for an %s bus with %i channels\n", busTypes.GetSize(), RoutingDirStrs[dir], pConfig->GetBusInfo(dir, busIdx)->NChans());
       
       for (auto tag = 0; tag < busTypes.GetSize(); tag++)
       {
@@ -82,7 +82,7 @@ static AUAudioUnitPreset* NewAUPreset(NSInteger number, NSString* pName)
       pTags[v] = (AudioChannelLayoutTag) foundTags.Get()[v];
     }
     
-    DBGMSG("Adding %i tags\n", foundTags.GetSize());
+    IPLUG_DBGMSG("Adding %i tags\n", foundTags.GetSize());
     
     return 1; // success
   }

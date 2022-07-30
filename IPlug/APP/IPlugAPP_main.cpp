@@ -136,7 +136,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdPa
   }
   catch(...)
   {
-    DBGMSG("another instance running\n");
+    IPLUG_DBGMSG("another instance running\n");
   }
   return 0;
 }
@@ -165,7 +165,7 @@ int main(int argc, char *argv[])
 #endif
   
   if(AppIsSandboxed())
-    DBGMSG("App is sandboxed, file system access etc restricted!\n");
+    IPLUG_DBGMSG("App is sandboxed, file system access etc restricted!\n");
   
   return NSApplicationMain(argc,  (const char **) argv);
 }

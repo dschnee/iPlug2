@@ -42,7 +42,7 @@ public:
   
 private:
 #if DEBUG_ENV
-  bool mEnableDBGMSG = false;
+  bool mEnableIPLUG_DBGMSG = false;
 #endif
   
   const char* mName;
@@ -153,7 +153,7 @@ public:
     mReleased = false;
 
     #if DEBUG_ENV
-    if (mEnableDBGMSG) DBGMSG("retrigger\n");
+    if (mEnableIPLUG_DBGMSG) IPLUG_DBGMSG("retrigger\n");
     #endif
   }
 
@@ -171,7 +171,7 @@ public:
       }
 
       #if DEBUG_ENV
-      if (mEnableDBGMSG) DBGMSG("hard kill\n");
+      if (mEnableIPLUG_DBGMSG) IPLUG_DBGMSG("hard kill\n");
       #endif
     }
     else
@@ -184,7 +184,7 @@ public:
       }
 
       #if DEBUG_ENV
-      if (mEnableDBGMSG) DBGMSG("soft kill\n");
+      if (mEnableIPLUG_DBGMSG) IPLUG_DBGMSG("soft kill\n");
       #endif
     }
   }

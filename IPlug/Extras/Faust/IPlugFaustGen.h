@@ -169,11 +169,11 @@ class FaustGen : public IPlugFaust
     {
       void declare(const char* key, const char* value) override
       {
-        DBGMSG("FaustGen: metadata:\n");
+        IPLUG_DBGMSG("FaustGen: metadata:\n");
 
         if ((strcmp("name", key) == 0) || (strcmp("author", key) == 0))
         {
-          DBGMSG("\t\tkey:%s : %s\n", key, value);
+          IPLUG_DBGMSG("\t\tkey:%s : %s\n", key, value);
         }
         items.AddUnsorted(key, value);
       }

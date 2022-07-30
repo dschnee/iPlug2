@@ -33,20 +33,13 @@
 #include "IPlugConstants.h"
 #include "IPlugUtilities.h"
 
-BEGIN_IPLUG_NAMESPACE
-
 #ifdef NDEBUG
-  #define DBGMSG(...) do {} while(0)// should be optimized away
+  #define IPLUG_DBGMSG(...) do {} while(0)// should be optimized away
 #else
   #if defined(OS_MAC) || defined(OS_LINUX) || defined(OS_WEB) || defined(OS_IOS)
-    #define DBGMSG(...) printf(__VA_ARGS__)
+    #define IPLUG_DBGMSG(...) printf(__VA_ARGS__)
   #elif defined OS_WIN
-    #ifdef OutputDebugString
-    #undef OutputDebugString
-    #define OutputDebugString OutputDebugStringA
-    #endif
-
-    static void DBGMSG(const char* format, ...)
+    static void IPLUG_DBGMSG(const char* format, ...)
     {
       char buf[4096], * p = buf;
       va_list args;
@@ -65,10 +58,12 @@ BEGIN_IPLUG_NAMESPACE
       *p++ = '\n';
       *p = '\0';
 
-      OutputDebugString(buf);
+      OutputDebugStringA(buf);
     }
   #endif
 #endif
+
+BEGIN_IPLUG_NAMESPACE
 
 #if defined TRACER_BUILD
   #define TRACE Trace(TRACELOC, "");
@@ -103,7 +98,7 @@ BEGIN_IPLUG_NAMESPACE
       mFP = fopen(logFilePath, "w");
       assert(mFP);
       
-      DBGMSG("Logging to %s\n", logFilePath);
+      IPLUG_DBGMSG("Logging to %s\n", logFilePath);
     }
     
     ~LogFile()
@@ -226,7 +221,7 @@ BEGIN_IPLUG_NAMESPACE
       VARARGS_TO_STR(str);
       
   #ifdef TRACETOSTDOUT
-      DBGMSG("[%ld:%s:%d]%s", GetOrdinalThreadID(SYS_THREAD_ID), funcName, line, str);
+      IPLUG_DBGMSG("[%ld:%s:%d]%s", GetOrdinalThreadID(SYS_THREAD_ID), funcName, line, str);
   #else
       WDL_MutexLock lock(&sLogMutex);
       intptr_t threadID = GetOrdinalThreadID(SYS_THREAD_ID);

@@ -283,7 +283,7 @@ int IPlugProcessor::ParseChannelIOStr(const char* IOStr, WDL_PtrList<IOConfig>& 
   bool foundAWildcard = false;
   int IOConfigIndex = 0;
 
-  DBGMSG("\nBEGIN IPLUG CHANNEL IO PARSER --------------------------------------------------\n");
+  IPLUG_DBGMSG("\nBEGIN IPLUG CHANNEL IO PARSER --------------------------------------------------\n");
   // lamda function to iterate through the period separated buses and check that none have 0 channel count
   auto ParseBusToken = [&foundAWildcard, &IOConfigIndex](ERoute busDir, char* pBusStr, char* pBusStrEnd, int& NBuses, int& NChans, IOConfig* pConfig)
   {
@@ -300,7 +300,7 @@ int IPlugProcessor::ParseChannelIOStr(const char* IOStr, WDL_PtrList<IOConfig>& 
         ; //don't do anything
       else
       {
-        DBGMSG("Error: something wrong in the %s part of this io string: %s.\n", RoutingDirStrs[busDir], pBusStr);
+        IPLUG_DBGMSG("Error: something wrong in the %s part of this io string: %s.\n", RoutingDirStrs[busDir], pBusStr);
         assert(0);
       }
       NChans += NChanOnBus;
@@ -314,7 +314,7 @@ int IPlugProcessor::ParseChannelIOStr(const char* IOStr, WDL_PtrList<IOConfig>& 
       }
       else if(NBuses > 0)
       {
-        DBGMSG("Error: with multiple %s buses you can't define one with no channels!\n", RoutingDirStrs[busDir]);
+        IPLUG_DBGMSG("Error: with multiple %s buses you can't define one with no channels!\n", RoutingDirStrs[busDir]);
         assert(NChanOnBus > 0);
       }
     }
@@ -348,7 +348,7 @@ int IPlugProcessor::ParseChannelIOStr(const char* IOStr, WDL_PtrList<IOConfig>& 
     {
       if(strcmp(IOStrlist.Get(str)->Get(), thisIOStr->Get()) == 0)
       {
-        DBGMSG("Error: Duplicate IO string. %s\n", thisIOStr->Get());
+        IPLUG_DBGMSG("Error: Duplicate IO string. %s\n", thisIOStr->Get());
         assert(0);
       }
     }
@@ -367,17 +367,17 @@ int IPlugProcessor::ParseChannelIOStr(const char* IOStr, WDL_PtrList<IOConfig>& 
 
     if(foundAWildcard == true && IOConfigIndex > 0)
     {
-      DBGMSG("Error: You can only have a single IO config when using wild cards.\n");
+      IPLUG_DBGMSG("Error: You can only have a single IO config when using wild cards.\n");
       assert(0);
     }
 
-    DBGMSG("Channel I/O #%i - %s\n", IOConfigIndex + 1, thisIOStr->Get());
-    DBGMSG("               - input bus count: %i, output bus count %i\n", NInBuses, NOutBuses);
+    IPLUG_DBGMSG("Channel I/O #%i - %s\n", IOConfigIndex + 1, thisIOStr->Get());
+    IPLUG_DBGMSG("               - input bus count: %i, output bus count %i\n", NInBuses, NOutBuses);
     for (auto i = 0; i < NInBuses; i++)
-      DBGMSG("               - channel count on input bus %i: %i\n", i + 1, pConfig->NChansOnBusSAFE(ERoute::kInput, i));
+      IPLUG_DBGMSG("               - channel count on input bus %i: %i\n", i + 1, pConfig->NChansOnBusSAFE(ERoute::kInput, i));
     for (auto i = 0; i < NOutBuses; i++)
-      DBGMSG("               - channel count on output bus %i: %i\n", i + 1, pConfig->NChansOnBusSAFE(ERoute::kOutput, i));
-    DBGMSG("               - input channel count across all buses: %i, output channel count across all buses %i\n\n", NInChans, NOutChans);
+      IPLUG_DBGMSG("               - channel count on output bus %i: %i\n", i + 1, pConfig->NChansOnBusSAFE(ERoute::kOutput, i));
+    IPLUG_DBGMSG("               - input channel count across all buses: %i, output channel count across all buses %i\n\n", NInChans, NOutChans);
 
     totalNInChans = std::max(totalNInChans, NInChans);
     totalNOutChans = std::max(totalNOutChans, NOutChans);
@@ -393,9 +393,9 @@ int IPlugProcessor::ParseChannelIOStr(const char* IOStr, WDL_PtrList<IOConfig>& 
 
   free(pChannelIOStr);
   IOStrlist.Empty(true);
-  DBGMSG("%i I/O configs detected\n", IOConfigIndex);
-  DBGMSG("Total # in chans: %i, Total # out chans: %i \n\n", totalNInChans, totalNOutChans);
-  DBGMSG("END IPLUG CHANNEL IO PARSER --------------------------------------------------\n");
+  IPLUG_DBGMSG("%i I/O configs detected\n", IOConfigIndex);
+  IPLUG_DBGMSG("Total # in chans: %i, Total # out chans: %i \n\n", totalNInChans, totalNOutChans);
+  IPLUG_DBGMSG("END IPLUG CHANNEL IO PARSER --------------------------------------------------\n");
 
   return IOConfigIndex;
 }

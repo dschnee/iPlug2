@@ -103,7 +103,7 @@ llvm_dsp_factory *FaustGen::Factory::CreateFactoryFromSourceCode()
   // Generate SVG file // this shouldn't get called if we not making SVGs
 //  if (!generateAuxFilesFromString(name.Get(), mSourceCodeStr.Get(), N, argv, error))
 //  {
-//    DBGMSG("FaustGen-%s: Generate SVG error : %s\n", error.c_str());
+//    IPLUG_DBGMSG("FaustGen-%s: Generate SVG error : %s\n", error.c_str());
 //  }
 
   argv[N] = 0; // NULL terminated argv
@@ -111,7 +111,7 @@ llvm_dsp_factory *FaustGen::Factory::CreateFactoryFromSourceCode()
   llvm_dsp_factory* pFactory = createDSPFactoryFromString(name.Get(), mSourceCodeStr.Get(), N, argv, GetLLVMArchStr(), error, mOptimizationLevel);
 
   if(error.length())
-    DBGMSG("%s\n", error.c_str());
+    IPLUG_DBGMSG("%s\n", error.c_str());
   
   assert(pFactory != nullptr);
 
@@ -138,7 +138,7 @@ llvm_dsp_factory *FaustGen::Factory::CreateFactoryFromSourceCode()
 //    {
 //      (*mInstances.begin())->hilight_error(error);
 //    }
-    DBGMSG("FaustGen-%s: Invalid Faust code or compile options : %s\n", mName.Get(), error.c_str());
+    IPLUG_DBGMSG("FaustGen-%s: Invalid Faust code or compile options : %s\n", mName.Get(), error.c_str());
     return 0;
   }
 }
@@ -173,7 +173,7 @@ llvm_dsp_factory *FaustGen::Factory::CreateFactoryFromSourceCode()
   if (mLLVMFactory)
   {
     pDSP = CreateDSPInstance(handler);
-    DBGMSG("FaustGen-%s: Factory already allocated, %i input(s), %i output(s)\n", mName.Get(), pDSP->getNumInputs(), pDSP->getNumOutputs());
+    IPLUG_DBGMSG("FaustGen-%s: Factory already allocated, %i input(s), %i output(s)\n", mName.Get(), pDSP->getNumInputs(), pDSP->getNumOutputs());
     goto end;
   }
 
@@ -185,7 +185,7 @@ llvm_dsp_factory *FaustGen::Factory::CreateFactoryFromSourceCode()
     {
       pDSP = CreateDSPInstance(handler);
       pDSP->metadata(&meta);
-      DBGMSG("FaustGen-%s: Compilation from bitcode succeeded, %i input(s), %i output(s)\n", mName.Get(), pDSP->getNumInputs(), pDSP->getNumOutputs());
+      IPLUG_DBGMSG("FaustGen-%s: Compilation from bitcode succeeded, %i input(s), %i output(s)\n", mName.Get(), pDSP->getNumInputs(), pDSP->getNumOutputs());
       goto end;
     }
   }
@@ -198,7 +198,7 @@ llvm_dsp_factory *FaustGen::Factory::CreateFactoryFromSourceCode()
     {
       pDSP = CreateDSPInstance(handler);
       pDSP->metadata(&meta);
-      DBGMSG("FaustGen-%s: Compilation from source code succeeded, %i input(s), %i output(s)\n", mName.Get(), pDSP->getNumInputs(), pDSP->getNumOutputs());
+      IPLUG_DBGMSG("FaustGen-%s: Compilation from source code succeeded, %i input(s), %i output(s)\n", mName.Get(), pDSP->getNumInputs(), pDSP->getNumOutputs());
       goto end;
     }
   }
@@ -208,7 +208,7 @@ llvm_dsp_factory *FaustGen::Factory::CreateFactoryFromSourceCode()
   mLLVMFactory = createDSPFactoryFromString("default", mSourceCodeStr.Get(), 0, 0, GetLLVMArchStr(), error, 0);
 
   pDSP = CreateDSPInstance(handler);
-  DBGMSG("FaustGen-%s: Allocation of default DSP succeeded, %i input(s), %i output(s)\n", mName.Get(), pDSP->getNumInputs(), pDSP->getNumOutputs());
+  IPLUG_DBGMSG("FaustGen-%s: Allocation of default DSP succeeded, %i input(s), %i output(s)\n", mName.Get(), pDSP->getNumInputs(), pDSP->getNumOutputs());
 
 end:
   assert(pDSP);
@@ -243,14 +243,14 @@ void FaustGen::Factory::PrintCompileOptions()
 {
   if (mCompileOptions.size() > 0)
   {
-    DBGMSG("FaustGen-%s: Compile options: ", mName.Get());
+    IPLUG_DBGMSG("FaustGen-%s: Compile options: ", mName.Get());
 
     for (auto c : mCompileOptions)
     {
-      DBGMSG("%s ", c.c_str());
+      IPLUG_DBGMSG("%s ", c.c_str());
     }
     
-    DBGMSG("\n");
+    IPLUG_DBGMSG("\n");
   }
 }
 
@@ -303,7 +303,7 @@ void FaustGen::Factory::SetDefaultCompileOptions()
 
 void FaustGen::Factory::UpdateSourceCode(const char* str)
 {
-  DBGMSG("FaustGen-%s: Updating source code %s...\n", mName.Get(), str);
+  IPLUG_DBGMSG("FaustGen-%s: Updating source code %s...\n", mName.Get(), str);
 
   // Recompile only if text has been changed
   if (strcmp(str, mSourceCodeStr.Get()) != 0)
@@ -329,7 +329,7 @@ void FaustGen::Factory::UpdateSourceCode(const char* str)
   }
   else
   {
-    DBGMSG("FaustGen-%s: DSP code has not been changed...\n", mName.Get());
+    IPLUG_DBGMSG("FaustGen-%s: DSP code has not been changed...\n", mName.Get());
   }
 }
 
@@ -394,10 +394,10 @@ bool FaustGen::Factory::WriteToFile(const char* file)
 
 void FaustGen::Factory::SetCompileOptions(std::initializer_list<const char*> options)
 {
-  DBGMSG("FaustGen-%s: Compiler options modified for FaustGen\n", mName.Get());
+  IPLUG_DBGMSG("FaustGen-%s: Compiler options modified for FaustGen\n", mName.Get());
 
   if (options.size() == 0)
-    DBGMSG("FaustGen-%s: No argument entered, no additional compilation option will be used", mName.Get());
+    IPLUG_DBGMSG("FaustGen-%s: No argument entered, no additional compilation option will be used", mName.Get());
 
   //TODO
 //  mOptions = options;
@@ -405,7 +405,7 @@ void FaustGen::Factory::SetCompileOptions(std::initializer_list<const char*> opt
 //  /*
 //  if (optimize) {
 //
-//    DBGMSG("FaustGen-%s: Start looking for optimal compilation options...\n");
+//    IPLUG_DBGMSG("FaustGen-%s: Start looking for optimal compilation options...\n");
 //
 //  #ifdef OS_MAC
 //    double best;
@@ -413,7 +413,7 @@ void FaustGen::Factory::SetCompileOptions(std::initializer_list<const char*> opt
 //    mOptions = optimizer.findOptimizedParameters(best);
 //  #endif
 //
-//    DBGMSG("FaustGen-%s: Optimal compilation options found\n");
+//    IPLUG_DBGMSG("FaustGen-%s: Optimal compilation options found\n");
 //  }
 //  */
 //
@@ -447,7 +447,7 @@ FaustGen::FaustGen(const char* name, const char* inputDSPFile, int nVoices, int 
   }
   else
   {
-    DBGMSG("FaustGen: attempting to load %s\n", inputDSPFile);
+    IPLUG_DBGMSG("FaustGen: attempting to load %s\n", inputDSPFile);
     mFactory = new Factory(name, libraryPath, drawPath, inputDSPFile);
     FaustGen::Factory::sFactoryMap[name] = mFactory;
   }
@@ -529,7 +529,7 @@ bool FaustGen::CompileCPP()
     //-double
     command.SetFormatted(1024, "%s -cn %s -i -a %s -o %s %s", FAUST_EXE, f.second->mName.Get(), archFile.Get(), outputFile.Get(), inputFile.Get());
 
-    DBGMSG("exec: %s\n", command.Get());
+    IPLUG_DBGMSG("exec: %s\n", command.Get());
 
     if(system(command.Get()) == -1)
       return false;
@@ -547,7 +547,7 @@ bool FaustGen::CompileCPP()
 
   if(system(command.Get()) == -1)
   {
-    DBGMSG("Error concatanating files %s %i\n", __FILE__, __LINE__);
+    IPLUG_DBGMSG("Error concatanating files %s %i\n", __FILE__, __LINE__);
 
     return false;
   }
@@ -560,7 +560,7 @@ bool FaustGen::CompileCPP()
 
   if(system(command.Get()) == -1)
   {
-    DBGMSG("Error removing output files %s %i\n", __FILE__, __LINE__);
+    IPLUG_DBGMSG("Error removing output files %s %i\n", __FILE__, __LINE__);
 
     return false;
   }
@@ -598,8 +598,8 @@ void FaustGen::OnTimer(Timer& timer)
 
       recompile = true;
       f.second->FreeDSPFactory();
-      DBGMSG("FaustGen-%s: File change detected ----------------------------------\n", mName.Get());
-      DBGMSG("FaustGen-%s: JIT compiling %s\n", mName.Get(), pInputFile->Get());
+      IPLUG_DBGMSG("FaustGen-%s: File change detected ----------------------------------\n", mName.Get());
+      IPLUG_DBGMSG("FaustGen-%s: JIT compiling %s\n", mName.Get(), pInputFile->Get());
       f.second->LoadFile(pInputFile->Get());
     }
       
@@ -609,7 +609,7 @@ void FaustGen::OnTimer(Timer& timer)
   if(recompile)
   {
     // TODO: should check for successfull JIT
-    DBGMSG("FaustGen-%s: Statically compiling all FAUST blocks\n", mName.Get());
+    IPLUG_DBGMSG("FaustGen-%s: Statically compiling all FAUST blocks\n", mName.Get());
     CompileCPP();
     //WDL_String objFile;
     //objFile.Set(pInputFile);

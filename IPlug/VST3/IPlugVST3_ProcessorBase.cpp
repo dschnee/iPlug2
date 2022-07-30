@@ -41,7 +41,7 @@ uint64_t iplug::GetAPIBusTypeForChannelIOConfig(int configIdx, ERoute dir, int b
     case 10:return SpeakerArr::k71_2; // aka k91Atmos
     case 16:return SpeakerArr::kAmbi3rdOrderACN;
     default:
-      DBGMSG("do not yet know what to do here\n");
+      IPLUG_DBGMSG("do not yet know what to do here\n");
       assert(0);
       return SpeakerArr::kEmpty;
   }

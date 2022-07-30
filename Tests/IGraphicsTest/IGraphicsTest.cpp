@@ -34,7 +34,7 @@ IGraphicsTest::IGraphicsTest(const InstanceInfo& info)
       IRECT bounds = pGraphics->GetBounds();
       pGraphics->GetBackgroundControl()->SetRECT(bounds);
 //      pGraphics->GetControlWithTag(kCtrlTagSize)->SetRECT(bounds);
-      DBGMSG("SELECTED: W %i, H%i\n", pGraphics->Width(), pGraphics->Height());
+      IPLUG_DBGMSG("SELECTED: W %i, H%i\n", pGraphics->Width(), pGraphics->Height());
       
       return;
     }
@@ -163,7 +163,7 @@ IGraphicsTest::IGraphicsTest(const InstanceInfo& info)
 
 void IGraphicsTest::OnHostSelectedViewConfiguration(int width, int height)
 {
-  DBGMSG("SELECTED: W %i, H%i\n", width, height);
+  IPLUG_DBGMSG("SELECTED: W %i, H%i\n", width, height);
 //  const float scale = (float) height / (float) PLUG_HEIGHT;
   
 //  if(GetUI())
@@ -172,5 +172,5 @@ void IGraphicsTest::OnHostSelectedViewConfiguration(int width, int height)
 
 bool IGraphicsTest::OnHostRequestingSupportedViewConfiguration(int width, int height)
 {
-  DBGMSG("SUPPORTED: W %i, H%i\n", width, height); return true;
+  IPLUG_DBGMSG("SUPPORTED: W %i, H%i\n", width, height); return true;
 }

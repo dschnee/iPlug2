@@ -92,7 +92,7 @@ void IGraphics::Resize(int w, int h, float scale, bool needsPlatformResize)
   
   if (w == Width() && h == Height() && scale == GetDrawScale()) return;
   
-  //DBGMSG("resize %i, resize %i, scale %f\n", w, h, scale);
+  //IPLUG_DBGMSG("resize %i, resize %i, scale %f\n", w, h, scale);
   ReleaseMouseCapture();
 
   mDrawScale = scale;
@@ -330,7 +330,7 @@ void IGraphics::AttachCornerResizer(ICornerResizerControl* pControl, EUIResizerM
     mCornerResizer->SetDelegate(*GetDelegate());
   }
 #else
-DBGMSG("AttachCornerResizer() is disabled for AUv3");
+IPLUG_DBGMSG("AttachCornerResizer() is disabled for AUv3");
 #endif
 }
 
@@ -1046,7 +1046,7 @@ void IGraphics::OnTouchCancelled(const std::vector<IMouseInfo>& points)
         pCapturedControl->OnTouchCancelled(x, y, mod);
         mCapturedMap.erase(mod.touchID); // remove from captured list
         
-        //        DBGMSG("DEL - NCONTROLS captured = %lu\n", mCapturedMap.size());
+        //        IPLUG_DBGMSG("DEL - NCONTROLS captured = %lu\n", mCapturedMap.size());
       }
     }
   }
@@ -1295,7 +1295,7 @@ IControl* IGraphics::GetMouseControl(float x, float y, bool capture, bool mouseO
     
     mCapturedMap.insert(std::make_pair(touchID, pControl));
     
-//    DBGMSG("ADD - NCONTROLS captured = %lu\n", mCapturedMap.size());
+//    IPLUG_DBGMSG("ADD - NCONTROLS captured = %lu\n", mCapturedMap.size());
   }
   
   if (mouseOver)
@@ -2088,7 +2088,7 @@ bool IGraphics::LoadFont(const char* fontID, const char* fileNameOrResID)
     }
   }
   
-  DBGMSG("Could not locate font %s\n", fileNameOrResID);
+  IPLUG_DBGMSG("Could not locate font %s\n", fileNameOrResID);
   return false;
 }
 
@@ -2105,7 +2105,7 @@ bool IGraphics::LoadFont(const char* fontID, void* pData, int dataSize)
     }
   }
 
-  DBGMSG("Could not load font %s\n", fontID);
+  IPLUG_DBGMSG("Could not load font %s\n", fontID);
   return false;
 }
 
@@ -2122,7 +2122,7 @@ bool IGraphics::LoadFont(const char* fontID, const char* fontName, ETextStyle st
     }
   }
   
-  DBGMSG("Could not locate font %s\n", fontID);
+  IPLUG_DBGMSG("Could not locate font %s\n", fontID);
   return false;
 }
 
