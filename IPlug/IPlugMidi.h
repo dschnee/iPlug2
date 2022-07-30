@@ -199,8 +199,8 @@ struct IMidiMsg
   void MakeProgramChange(int program, int channel = 0, int offset = 0)
   {
     Clear();
-    mStatus = channel | (kProgramChange << 4);
-    mData1 = program;
+    mStatus = uint8_t (channel | (kProgramChange << 4));
+    mData1 = (uint8_t) program;
     mOffset = offset;
   }
 
