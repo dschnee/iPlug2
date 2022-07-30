@@ -138,6 +138,7 @@
   #if defined VST3_API
   static Steinberg::FUnknown* createInstance(void*)
   {
+    using namespace iplug;
     return (Steinberg::Vst::IAudioProcessor*) MakePlug(InstanceInfo());
   }
 
