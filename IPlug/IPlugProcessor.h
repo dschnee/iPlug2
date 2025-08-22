@@ -128,7 +128,7 @@ public:
 
 #pragma mark -
   /** @return The number of samples elapsed since start of project timeline. */
-  int GetSamplePos() const { return (int) mTimeInfo.mSamplePos; }
+  double GetSamplePos() const { return mTimeInfo.mSamplePos; }
 
   /** @return The tempo in beats per minute */
   double GetTempo() const { return mTimeInfo.mTempo; }
@@ -279,10 +279,8 @@ protected:
   void ProcessBuffers(PLUG_SAMPLE_DST type, int nFrames);
   void ProcessBuffersAccumulating(int nFrames); // only for VST2 deprecated method single precision
   void ZeroScratchBuffers();
-  public:
   void SetSampleRate(double sampleRate) { mSampleRate = sampleRate; }
   void SetBlockSize(int blockSize);
-  protected:
   void SetBypassed(bool bypassed) { mBypassed = bypassed; }
   void SetTimeInfo(const ITimeInfo& timeInfo) { mTimeInfo = timeInfo; }
   void SetRenderingOffline(bool renderingOffline) { mRenderingOffline = renderingOffline; }
