@@ -49,7 +49,7 @@
       n = vsnprintf_s(buf, sizeof buf, sizeof buf - 1, format, args);
       va_end(args);
 
-      OutputDebugStringW(UTF8AsUTF16(buf).Get());
+      OutputDebugStringW(iplug::UTF8AsUTF16(buf).Get());
     }
   #endif
 #endif
