@@ -43,7 +43,7 @@ bool IPlugAPP::EditorResize(int viewWidth, int viewHeight)
     
   if (viewWidth != GetEditorWidth() || viewHeight != GetEditorHeight())
   {
-    #if defined OS_MAC || defined NO_IGRAPHICS 
+    #if 0 // defined OS_MAC || defined NO_IGRAPHICS 
     RECT rcClient, rcWindow;
     POINT ptDiff;
     
